@@ -1,0 +1,82 @@
+#define LED1  13
+#define LED2  8
+#define TLAC  2
+
+bool t1;
+unsigned long start;
+int stav_led;
+int stav_tl;
+bool previousState;
+bool currentState;
+int btn_state;
+long startMil;
+long stopMil;
+bool play;
+
+void setup()
+{
+  pinMode(LED1, OUTPUT);
+  pinMode(LED2, OUTPUT);
+  pinMode(TLAC, INPUT_PULLUP);
+  stav_led=0;
+  stav_tl=0;
+  start = millis();
+  btn_state=0;
+}
+
+void loop()
+{
+  previousState= currentState;
+  currentState = digitalRead(TLAC);
+	switch(btn_state){
+      case 0: if(currentState==0 && previousState==1){
+            startMil=millis();
+            btn_state=2;
+        }break;
+      case 1: if(currentState==1 && previousState==0){
+            stopMil=millis();
+            btn_state=0;
+            if((stopMil-startMil)>=1000)play=1;
+          }
+      		break;
+      case 2: if(currentState==0){
+        if((millis()-startMil)>=1000){
+          play=1;
+          startMil=millis();
+          btn_state=1;
+        }
+      }else{
+        	btn_state=0;
+        }break;
+    }
+  
+  switch(stav_led){
+    case 0:	if((millis()-start)>=1000){
+  				digitalWrite(LED1,1);
+      			start=millis();
+      			stav_led=1;
+    		}
+    		break;
+    case 1:	if((millis()-start)>=1000){
+  				digitalWrite(LED1,0);
+      			start=millis();
+      			stav_led=0;
+    		}
+    		break;
+  	}
+  
+  switch(stav_tl){
+        case 0:	if((stopMil-startMil)>=1000){
+                  digitalWrite(LED2,1);
+                  stopMil=0;
+                  startMil=0;
+                  stav_tl=1;
+        		}break;
+        case 1:	if((stopMil-startMil)>=1000){
+                  digitalWrite(LED2,0);
+                  stopMil=0;
+                  startMil=0;
+                  stav_tl=0;
+        		}break;
+            }
+  }

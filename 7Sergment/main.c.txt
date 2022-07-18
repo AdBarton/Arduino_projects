@@ -1,0 +1,82 @@
+#define A 2
+#define	B 3
+int sen[]={13,12,11,10,9,8,7,6};
+
+bool nums[11][7]={	{1,1,1,1,1,1,0},//0
+					{0,1,1,0,0,0,0},//1
+  					{1,1,0,1,1,0,1},//2
+					{1,1,1,1,0,0,1},//3
+					{0,1,1,0,0,1,1},//4
+					{1,0,1,1,0,1,1},//5
+					{1,0,1,1,1,1,1},//6
+					{1,1,1,0,0,0,0},//7
+					{1,1,1,1,1,1,1},//8
+					{1,1,1,1,0,1,1},//9
+					{1,0,0,1,1,1,1}};//Error
+
+int position;
+int state;
+void setup()
+{
+  for(int i=0;i<8;i++)
+  {
+    pinMode(sen[i],OUTPUT);
+  }
+  pinMode(A,INPUT_PULLUP);
+  pinMode(B,INPUT_PULLUP);
+  state=0;
+}
+
+void number(int cislo,bool tecka)
+{
+  if(cislo>10) cislo=10;
+  for(int i;i<7;i++)
+  {
+  	digitalWrite(sen[i],nums[cislo][i]);
+  }
+  digitalWrite(6,tecka);
+}
+
+void encoder(){
+  switch(state){
+  	case 0:
+    	state = 1;
+    	break;
+    case 1:
+    	if(!digitalRead(A)){
+    		state = 2;
+        }else{
+        	state = 3;
+        }
+    	break;
+    case 2://plus
+    	if(digitalRead(B)){
+    	  if(position==9){
+          	position=9;
+          }else{
+          	position++;
+          }
+        }
+   	 	delay(300);
+    	state=1;
+    	break;
+    case 3://minus
+    	if(digitalRead(B)){
+          if(position==0){
+          	position=0;
+          }else{
+          	position--;
+          }
+        }
+    	delay(300);
+    	state=1;
+    	break;
+  }
+}
+
+int a;
+void loop()
+{
+  encoder();
+  number(position,true);
+}
