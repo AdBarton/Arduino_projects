@@ -26,5 +26,6 @@
  ## QuadCopter layout
  - **CW** - ClockWise
  - **CCW** - CounterClockWise
- - ![Clockwise and Counterclockwise](https://www.mathsisfun.com/geometry/images/clockwise.svg)
+ ![Clockwise and Counterclockwise](https://www.mathsisfun.com/geometry/images/clockwise.svg)
+ 
  ![Drone layout](https://github.com/AdBarton/Homemade-projects/blob/main/Drones/Pixhawk_Quad/Drone_layout.png)
