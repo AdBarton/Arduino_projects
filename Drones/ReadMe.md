@@ -21,5 +21,10 @@
 - **Battery**
   - [Zeee 3S LiPo Battery 11.1V 5200mAh 60C](https://www.amazon.co.uk/Zeee-5200mAh-Battery-Connector-Helicopter/dp/B081N423RG/ref=sr_1_8?keywords=FMT+11.1V+3300Mah+25C+Lipo+battery+*1&qid=1665512779&qu=eyJxc2MiOiIxLjUxIiwicXNhIjoiMC4wMCIsInFzcCI6IjAuMDAifQ%3D%3D&s=kids&sr=1-8)
  
- ### QuadCopter Pixhawk
- ![This is an image](https://github.com/AdBarton/Homemade-projects/blob/main/Drones/Pixhawk_Quad/IMG_1984.JPG)
+ ## QuadCopter Pixhawk
+ ![Pixhawk drone](https://github.com/AdBarton/Homemade-projects/blob/main/Drones/Pixhawk_Quad/IMG_1984.JPG)
+ ## QuadCopter layout
+ - **CW** - ClockWise
+ - **CCW** - CounterClockWise
+ - ![Clockwise and Counterclockwise](https://www.mathsisfun.com/geometry/images/clockwise.svg)
+ ![Drone layout](https://github.com/AdBarton/Homemade-projects/blob/main/Drones/Pixhawk_Quad/Drone_layout.png)
